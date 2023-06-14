@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>CyberArt·E: Unleashing the Boundless Creativity of AI and Digital Art</title>
+  <style>
+    /* Add your CSS styles here */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      max-width: 100px;
+    }
+    .banner {
+      width: 100%;
+      max-height: 300px;
+      overflow: hidden;
+    }
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .artwork {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .artwork:hover {
+      transform: translateY(-5px);
+    }
+    .artwork img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .artwork h2 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .artwork p {
+      font-size: 14px;
+      color: #888;
+    }
+    #uploadForm {
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s ease-in-out;
+    }
+    input[type="text"]:focus,
+    input[type="file"]:focus {
+      border-color: #777;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    #trending {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .trending-item {
+      width: calc(33.33% - 20px);
+      margin: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .trending-item:hover {
+      transform: translateY(-5px);
+    }
+    .trending-item img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .trending-item h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #333;
+      text-align: center;
+    }
+    .trending-item p {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+    .post {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .post h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .post p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.5;
+    }
+    footer {
+      background-color: #222;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .more-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: white;
+      background-color: #222;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      text-decoration: none;
+    }
+    .more-button:hover {
+      background-color: #111;
+    }
+
+    .artwork {
+      transition: transform 0.3s ease-in-out;
+    }
+    .artwork:hover {
+      transform: translateY(-5px);
+    }
+    .trending-item {
+      transition: transform 0.3s ease-in-out;
+    }
+    .trending-item:hover {
+      transform: translateY(-5px);
+    }
+    .post {
+      transition: transform 0.3s ease-in-out;
+    }
+    .post:hover {
+      transform: translateY(-5px);
+    }
+    .user-profile .profile-picture img {
+      transition: transform 0.3s ease-in-out;
+    }
+    .user-profile .profile-picture:hover img {
+      transform: rotate(360deg);
+    }
+    .user-profile .profile-picture input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: 600px) {
+      header {
+        padding: 10px;
+      }
+      .banner {
+        max-height: 150px;
+      }
+      main {
+        margin: 10px;
+        padding: 10px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .artwork img {
+        max-width: 200px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .animated {
+      animation-fill-mode: both;
+      animation-duration: 1s;
+    }
+    .fadeIn {
+      animation-name: fadeIn;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .animated {
+      animation-fill-mode: both;
+      animation-duration: 1s;
+    }
+    .fadeIn {
+      animation-name: fadeIn;
+    }
+   /* Add CSS styles here */
+   h2 {
+    text-align: center;
+    margin-top: 40px;
+    color: #333; /* Replace with desired heading color */
+  }
+  
+  .artist-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .artist-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .artist-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #eee; /* Replace with desired background color */
+  }
+  
+  .artist-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .artist-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Replace with desired text color */
+  }
+  </style>
+  <script>
+    // Add your JavaScript code here
+    
+    function fetchArtworks() {
+      // Fetch AI artworks from the server
+      const artworks = [
+        // Sample data (replace with your own logic to fetch artworks)
+        { title: 'AI Artwork 1', imageUrl: 'path/to/image1.jpg', user: 'User1' },
+        { title: 'AI Artwork 2', imageUrl: 'path/to/image2.jpg', user: 'User2' },
+        { title: 'AI Artwork 3', imageUrl: 'path/to/image3.jpg', user: 'User3' },
+        { title: 'AI Artwork 4', imageUrl: 'path/to/image4.jpg', user: 'User4' },
+        { title: 'AI Artwork 5', imageUrl: 'path/to/image5.jpg', user: 'User5' },
+        { title: 'AI Artwork 6', imageUrl: 'path/to/image6.jpg', user: 'User6' },
+        { title: 'AI Artwork 7', imageUrl: 'path/to/image7.jpg', user: 'User7' },
+        { title: 'AI Artwork 8', imageUrl: 'path/to/image8.jpg', user: 'User8' },
+        { title: 'AI Artwork 9', imageUrl: 'path/to/image9.jpg', user: 'User9' },
+        { title: 'AI Artwork 10', imageUrl: 'path/to/image10.jpg', user: 'User10' },
+      ];
+      const feed = document.getElementById('feed');
+      
+      // Generate HTML for each artwork and append it to the feed
+      artworks.forEach((artwork) => {
+        const artworkElement = document.createElement('div');
+        artworkElement.classList.add('artwork');
+        
+        const imageElement = document.createElement('img');
+        imageElement.src = artwork.imageUrl;
+        
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = artwork.title;
+        
+        const userElement = document.createElement('p');
+        userElement.textContent = 'By: ' + artwork.user;
+        
+        artworkElement.appendChild(imageElement);
+        artworkElement.appendChild(titleElement);
+        artworkElement.appendChild(userElement);
+        
+        feed.appendChild(artworkElement);
+      });
+    }
+    fetchArtworks();
+
+    // Artwork data
+const artworkData = [
+{
+  imageSrc: 'path-to-image-1.jpg',
+  title: 'Artwork 1',
+  artist: 'Artist 1'
+},
+{
+  imageSrc: 'path-to-image-2.jpg',
+  title: 'Artwork 2',
+  artist: 'Artist 2'
+},
+// Add more artwork objects as needed
+];
+
+// Function to generate artwork elements
+function generateArtworkElements() {
+const artworkGallery = document.getElementById('artwork-gallery');
+
+artworkData.forEach((artwork) => {
+  // Create artwork item container
+  const artworkItem = document.createElement('div');
+  artworkItem.classList.add('artwork-item');
+
+  // Create image element
+  const image = document.createElement('img');
+  image.src = artwork.imageSrc;
+  artworkItem.appendChild(image);
+
+  // Create title element
+  const title = document.createElement('h3');
+  title.textContent = artwork.title;
+  artworkItem.appendChild(title);
+
+  // Create artist element
+  const artist = document.createElement('p');
+  artist.textContent = `By ${artwork.artist}`;
+  artworkItem.appendChild(artist);
+
+  // Append artwork item to gallery
+  artworkGallery.appendChild(artworkItem);
+});
+}
+
+// Call the function to generate artwork elements
+generateArtworkElements();
+
+  </script>
+</head>
+<body>
+  <header>
+    <img class="logo" src="dalle-logo.png" alt="AI Artworks Logo">
+  </header>
+  
+  <div class="banner">
+    <img src="banner.jpg" alt="Banner Image">
+  </div>
+  
+  <main>
+    <h1>Discover AI Artworks</h1>
+    
+    <section id="trending">
+      <!-- Trending AI Artworks -->
+      <div class="trending-item">
+        <img src="1.jpg" alt="Trending Artwork 1">
+        <h3>Anime world</h3>
+        <p>By: User1</p>
+      </div>
+      <div class="trending-item">
+        <img src="2.jpg" alt="Trending Artwork 2">
+        <h3>Cat</h3>
+        <p>By: User2</p>
+      </div>
+      <div class="trending-item">
+        <img src="3.jpg" alt="Trending Artwork 3">
+        <h3>anime character</h3>
+        <p>By: User3</p>
+      </div>
+      <div class="trending-item">
+        <img src="image10.jpg" alt="Trending Artwork 3">
+        <h3>anime character</h3>
+        <p>By: User3</p>
+      </div>
+      <div class="trending-item">
+        <img src="image17.jpg" alt="Trending Artwork 3">
+        <h3>anime character</h3>
+        <p>By: User3</p>
+      </div>
+      
+      
+    </section>
+
+    <h1>Welcome to AI Artworks</h1>
+    <div class="artwork animated fadeIn">
+      <img src="filename (2).png" alt="Artwork 1">
+      <h2>Elsa :D</h2>
+      <p>Artist: John Doe</p>
+    </div>
+    <div class="artwork animated fadeIn">
+      <img src="filename (3).png" alt="Artwork 2">
+      <h2>Batman >:)</h2>
+      <p>Artist: Arc_</p>
+    </div>
+    <div class="artwork animated fadeIn">
+      <img src="filename (5).png" alt="Artwork 3">
+      <h2>Artwork 3</h2>
+      <p>Artist: Arc_</p>
+    </div>
+    <div class="artwork animated fadeIn">
+      <img src="filename (4).png" alt="Artwork 4">
+      <h2>Artwork 4</h2>
+      <p>Artist: Mark Davis</p>
+    </div>
+    
+   
+  <h2>Recent Artworks</h2>
+  <section id="feed">
+    <!-- Display AI Artworks in a feed-like structure -->
+    <!-- ... -->
+    <div class="post">
+      <h2>AI Artwork 1</h2>
+      <img src="1.jpg" alt="AI Artwork 1">
+      <p>By: User1</p>
+      <div class="likes">
+        <button class="like-button">Like</button>
+        <span class="like-count">0 likes</span>
+      </div>
+      <div class="comments">
+        <h3>Comments</h3>
+        <div class="comment">
+          <p><strong>User2:</strong> Awesome artwork!</p>
+        </div>
+        <div class="comment">
+          <p><strong>User3:</strong> I love it!</p>
+        </div>
+        <!-- ... -->
+        <form class="comment-form">
+          <input type="text" placeholder="Add a comment" />
+          <button type="submit">Post</button>
+        </form>
+      </div>
+      <div class="share">
+        <button class="share-button">Share</button>
+      </div>
+    </div>
+    
+  
+    <section class="trending">
+      
+      <div class="trending-carousel">
+        <!-- Add trending artwork items here -->
+      </div>
+      
+    </section>
+    <div class="post">
+      <h2>AI Artwork 1</h2>
+      <img src="image4.jpg" alt="AI Artwork 1">
+      <p>By: User1</p>
+      <div class="likes">
+        <button class="like-button">Like</button>
+        <span class="like-count">0 likes</span>
+      </div>
+      <div class="comments">
+        <h3>Comments</h3>
+        <div class="comment">
+          <p><strong>User2:</strong> Awesome artwork!</p>
+        </div>
+        <div class="comment">
+          <p><strong>User3:</strong> I love it!</p>
+        </div>
+        <!-- ... -->
+        <form class="comment-form">
+          <input type="text" placeholder="Add a comment" />
+          <button type="submit">Post</button>
+        </form>
+      </div>
+      <div class="share">
+        <button class="share-button">Share</button>
+      </div>
+    </div>
+
+    <div class="post">
+      <h2>AI Artwork 1</h2>
+      <img src="filename (1).png" alt="AI Artwork 1">
+      <p>By: User1</p>
+      <div class="likes">
+        <button class="like-button">Like</button>
+        <span class="like-count">0 likes</span>
+      </div>
+      <div class="comments">
+        <h3>Comments</h3>
+        <div class="comment">
+          <p><strong>User2:</strong> Damn!</p>
+        </div>
+        <div class="comment">
+          <p><strong>User3:</strong> job!</p>
+        </div>
+        <!-- ... -->
+        <form class="comment-form">
+          <input type="text" placeholder="Add a comment" />
+          <button type="submit">Post</button>
+        </form>
+      </div>
+      <div class="share">
+        <button class="share-button">Share</button>
+      </div>
+    </div>
+
+  
+
+  </section>
+    <section id="upload">
+      <h2>Featured Artists</h2>
+      <div class="artist-section">
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="images.jpg" alt="Artist 1">
+          </div>
+          <div class="artist-name">shubha_0</div>
+        </div>
+        
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="download.jpg" alt="Artist 2">
+          </div>
+          <div class="artist-name">Arc</div>
+        </div>
+        
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="download2.jpg" alt="Artist 3">
+          </div>
+          <div class="artist-name">artistA</div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="image15.jpg" alt="Artist 1">
+          </div>
+          <div class="artist-name">Suman_0</div>
+        </div>
+        
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="image24.png" alt="Artist 2">
+          </div>
+          <div class="artist-name">Upcoming_artista</div>
+        </div>
+        
+        <div class="artist-card">
+          <div class="artist-icon">
+            <img src="image13.jpg" alt="Artist 3">
+          </div>
+          <div class="artist-name">fing_69</div>
+        </div>
+        
+        <!-- Add more artist cards as needed -->
+      </div>
+      
+    </section>
+
+    <section>
+      <div class="discord banner">
+        <img src="discord.png" style="width: 100vw; height: 50vh;"></img>
+        
+      </div>
+    </section>
+
+    <Section>
+      <div class="generate">
+        <button style="background-color: cyan; color: white; padding: 10px 20px; border: none; border-radius: 4px; margin-top: 10px;">
+          <a href="https://discord.com/channels/1112692586407268392/1117763937048473630" style="color: white; text-decoration: none;">Generate</a>
+        </button>
+      </div>
+    </Section>
+    <section>
+      <div id="insta">
+        <a href="https://www.instagram.com/cyberart_e_/" target="_blank">
+          <img src="instagram.png" alt="Instagram" width="32" height="32">
+        </a>
+        
+    </div>
+   
+   </section>
+    
+    
+    
+   
+  </main>
+  
+  <footer>
+    <p>AI Artworks &copy; 2023. All rights reserved. | Made with &hearts; by OpenAI</p>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </footer>
+</body>
+</html>
